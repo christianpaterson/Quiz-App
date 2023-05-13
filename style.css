@@ -29,14 +29,14 @@ body, html {
 }
 
 .title {
-    background-color: #8bd3dd;
+    background-color: #8fd7e2;
 }
 
 hr {
     border-top: 2px solid #90b4ce;
 }
 
-.questions, .answers {
+.question, .answers {
     margin: 15px;
 }
 
