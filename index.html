@@ -13,43 +13,38 @@
             <h1>Quiz</h1>
             <hr>
         </div>
-        <div class="questions">
+        <div class="question">
             <p>Question #</p><br>
-            <h3>What is the answer to this question?</h3>
+            <h3>Excited for this quiz?</h3>
         </div>
-
-
-        <!--name attribute: if all are equal, only one option selected
-            value attribute: answer choice appended to query string
-            id attribute: allows us to connect label via "for"-->
         <div class="answers">
             <div class="answer">
-                <input type="radio" id="a" value="a" name="answer" class="radio__input">
-                <label for="a" class="radio">A</label>
+                <input type="radio" id="a" value="a" name="answer" class="radio">
+                <label for="a" class="radio-label" id="label-a">Nope</label>
             </div>
             
             <div class="answer">
-                <input type="radio" id="b" value="b" name="answer" class="radio__input">
-                <label for="b" class="radio">B</label>
+                <input type="radio" id="b" value="b" name="answer" class="radio">
+                <label for="b" class="radio-label" id="label-b">I'm scared</label>
             </div>
 
             <div class="answer">
-                <input type="radio" id="c" value="c" name="answer" class="radio__input">
-                <label for="c" class="radio">C</label>
+                <input type="radio" id="c" value="c" name="answer" class="radio">
+                <label for="c" class="radio-label" id="label-c">I quit</label>
             </div>
 
             <div class="answer">
-                <input type="radio" id="d" value="d" name="answer" class="radio__input">
-                <label for="d" class="radio">D</label>
+                <input type="radio" id="d" value="d" name="answer" class="radio">
+                <label for="d" class="radio-label" id="label-d">Let's do it</label>
             </div>
         </div>
         <div class="toggle">
-            <button>Back</button>
-            <button>Next</button>
+            <button id="back">Back</button>
+            <button id="next">Next</button>
         </div>
         <div class="score">
             <p></p>
-            <button>Reset</button>
+            <button id="reset">Reset</button>
         </div>
     </div>
     <script src="questions.js"></script>
