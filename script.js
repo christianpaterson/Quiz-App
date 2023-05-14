@@ -51,6 +51,10 @@ let answerBlock = document.querySelector('.answers');
 let userAnswers = [];
 let nextButton = document.getElementById('next');
 let backButton = document.getElementById('back');
+let resetButton = document.getElementById('reset');
+let submitCommand = document.createElement('p');
+let scoreDisplay = document.createElement('p');
+
 
 backButton.addEventListener('click', function() {
     if(questionsCounter === 0) {return;}
@@ -65,12 +69,15 @@ backButton.addEventListener('click', function() {
     }
 })
 
+resetButton.addEventListener('click', function() {
+    document.location.reload();
+})
 
 nextButton.addEventListener('click', function(e) {
     if(getSelected() === undefined) {
         return;
     } else if(questionsCounter === correctAnswers.length) {
-        alert(`You selected: ${userAnswers} and ${correctAnswers} were correct.`);
+        //alert(`You selected: ${userAnswers} and ${correctAnswers} were correct.`);
         endQuiz();
         return;
     } else {
@@ -86,12 +93,9 @@ nextButton.addEventListener('click', function(e) {
             document.getElementById('label-b').style.display = 'none';
             document.getElementById('label-c').style.display = 'none';
             document.getElementById('label-d').style.display = 'none';
-            let p = document.createElement('p');
-            p.innerHTML = 'Quiz is over! Hit submit to see your score';
-            p.style.padding = '0px 0px 35px 25px';
-
-            answerBlock.appendChild(p);
-            
+            answerBlock.appendChild(submitCommand);
+            submitCommand.innerHTML = 'Quiz is over! Hit submit to see your score';
+            submitCommand.style.padding = '0px 0px 35px 25px';
             nextButton.innerHTML = 'Submit';
         } else {
             document.getElementById('label-a').innerHTML = questions[questionsCounter].a;
@@ -114,5 +118,19 @@ const getSelected = function () {
 }
 
 const endQuiz = function () {
-    document.location.reload();
+    document.querySelector('.answers p').style.display = 'none';
+    let score = calculateScore();
+    scoreDisplay.innerHTML = `Your score is ${score} out of ${correctAnswers.length}.`;
+    scoreDisplay.style.padding = '0px 0px 35px 25px';
+    answerBlock.appendChild(scoreDisplay);
+}
+
+function calculateScore() {
+    let score = 0;
+    for (let i = 0; i < correctAnswers.length; i++) {
+        if(correctAnswers[i] === userAnswers[i]) {
+            score++;
+        }
+    }
+    return score;
 }
