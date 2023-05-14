@@ -50,9 +50,20 @@ const allAnswer = document.querySelectorAll(".radio");
 let answerBlock = document.querySelector('.answers');
 let userAnswers = [];
 let nextButton = document.getElementById('next');
+let backButton = document.getElementById('back');
 
-
-
+backButton.addEventListener('click', function() {
+    if(questionsCounter === 0) {return;}
+    else if(questionsCounter === correctAnswers.length) {backButton.style.display = 'none';}
+    else {
+        userAnswers.pop(); questionsCounter--;
+        document.getElementById('label-a').innerHTML = questions[questionsCounter].a;
+        document.getElementById('label-b').innerHTML = questions[questionsCounter].b;
+        document.getElementById('label-c').innerHTML = questions[questionsCounter].c;
+        document.getElementById('label-d').innerHTML = questions[questionsCounter].d;
+        question.innerHTML = questions[questionsCounter].question;
+    }
+})
 
 
 nextButton.addEventListener('click', function(e) {
