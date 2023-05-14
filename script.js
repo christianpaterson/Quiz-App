@@ -58,7 +58,7 @@ let scoreDisplay = document.createElement('p');
 
 backButton.addEventListener('click', function() {
     if(questionsCounter === 0) {return;}
-    else if(questionsCounter === correctAnswers.length) {backButton.style.display = 'none';}
+    else if(questionsCounter === correctAnswers.length) {return;}
     else {
         userAnswers.pop(); questionsCounter--;
         document.getElementById('label-a').innerHTML = questions[questionsCounter].a;
