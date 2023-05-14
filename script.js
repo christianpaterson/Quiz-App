@@ -45,14 +45,14 @@ for (let problem of questions) {
 let questionNumber = document.querySelector('.question p');
 let question = document.querySelector('.question h3');
 let questionsCounter = 0;
-const allAnswer = document.querySelectorAll(".radio");
-const allLabel = document.querySelectorAll(".radio-label");
 let answerBlock = document.querySelector('.answers');
+let allRadio = document.querySelectorAll(".radio");
+let allLabel = document.querySelectorAll(".radio-label");
 let userAnswers = [];
 let nextButton = document.getElementById('next');
 let backButton = document.getElementById('back');
 let resetButton = document.getElementById('reset');
-let submitCommand = document.createElement('p');
+let submitInstruction = document.createElement('p');
 let scoreDisplay = document.createElement('p');
 
 
@@ -87,12 +87,12 @@ nextButton.addEventListener('click', function(e) {
         questionsCounter++;
 
         if(questionsCounter === correctAnswers.length) {
-            for (let ans of allAnswer) {ans.style.display = 'none';}
+            for (let ans of allRadio) {ans.style.display = 'none';}
             for (let label of allLabel) {label.style.display = 'none';}
-            answerBlock.appendChild(submitCommand);
-            submitCommand.innerHTML = 'Quiz is over! Hit submit to see your score';
-            submitCommand.style.padding = '0px 0px 35px 25px';
             nextButton.innerHTML = 'Submit';
+            submitInstruction.style.padding = '0px 0px 35px 25px';
+            submitInstruction.innerHTML = 'Your quiz is over! Hit submit to see your score.';
+            answerBlock.appendChild(submitInstruction);
         } else {
             questionNumber.innerHTML = questionNumber.innerHTML.slice(0, -1);
             questionNumber.innerHTML += `${questionsCounter + 1}`;
@@ -105,9 +105,9 @@ nextButton.addEventListener('click', function(e) {
     }
 })
 
-const getSelected = function () {
+function getSelected() {
     let ans = '';
-    allAnswer.forEach((el) => {
+    allRadio.forEach((el) => {
         if (el.checked) {
         ans = el.id;
         }
@@ -115,7 +115,7 @@ const getSelected = function () {
     return ans ? ans : alert('Select an option to proceed');
 }
 
-const endQuiz = function () {
+function endQuiz() {
     document.querySelector('.answers p').style.display = 'none';
     let score = calculateScore();
     scoreDisplay.innerHTML = `Your score is ${score} out of ${correctAnswers.length}.`;
