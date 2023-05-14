@@ -1,4 +1,4 @@
-const questions = [
+let questions = [
     {
         number: 1,
         question: "Excited for this quiz?",
@@ -31,8 +31,8 @@ const questions = [
         question: "Which of the following is true about Shopify developers?",
         a: "They are paid extremely well",
         b: "There is a high demand for them",
-        c: "ShopCommerce",
-        d: "They need to know web development, the platform itself, and the liquid template language",
+        c: "They need to know web development, the platform itself, and the liquid template language",
+        d: "All the above",
         correct: 'd'
     }
 ];
