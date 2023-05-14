@@ -1,4 +1,3 @@
-//[0,1,2]; number: 1, 2, 3; question; correct;
 let questions = [
     {
         number: 1,
@@ -43,10 +42,11 @@ for (let problem of questions) {
     correctAnswers.push(problem.correct);
 }
 
-
+let questionNumber = document.querySelector('.question p');
 let question = document.querySelector('.question h3');
 let questionsCounter = 0;
 const allAnswer = document.querySelectorAll(".radio");
+const allLabel = document.querySelectorAll(".radio-label");
 let answerBlock = document.querySelector('.answers');
 let userAnswers = [];
 let nextButton = document.getElementById('next');
@@ -61,6 +61,8 @@ backButton.addEventListener('click', function() {
     else if(questionsCounter === correctAnswers.length) {return;}
     else {
         userAnswers.pop(); questionsCounter--;
+        questionNumber.innerHTML = questionNumber.innerHTML.slice(0, -1);
+        questionNumber.innerHTML += `${questionsCounter + 1}`;
         document.getElementById('label-a').innerHTML = questions[questionsCounter].a;
         document.getElementById('label-b').innerHTML = questions[questionsCounter].b;
         document.getElementById('label-c').innerHTML = questions[questionsCounter].c;
@@ -85,19 +87,15 @@ nextButton.addEventListener('click', function(e) {
         questionsCounter++;
 
         if(questionsCounter === correctAnswers.length) {
-            document.getElementById('a').style.display = 'none';
-            document.getElementById('b').style.display = 'none';
-            document.getElementById('c').style.display = 'none';
-            document.getElementById('d').style.display = 'none';
-            document.getElementById('label-a').style.display = 'none';
-            document.getElementById('label-b').style.display = 'none';
-            document.getElementById('label-c').style.display = 'none';
-            document.getElementById('label-d').style.display = 'none';
+            for (let ans of allAnswer) {ans.style.display = 'none';}
+            for (let label of allLabel) {label.style.display = 'none';}
             answerBlock.appendChild(submitCommand);
             submitCommand.innerHTML = 'Quiz is over! Hit submit to see your score';
             submitCommand.style.padding = '0px 0px 35px 25px';
             nextButton.innerHTML = 'Submit';
         } else {
+            questionNumber.innerHTML = questionNumber.innerHTML.slice(0, -1);
+            questionNumber.innerHTML += `${questionsCounter + 1}`;
             document.getElementById('label-a').innerHTML = questions[questionsCounter].a;
             document.getElementById('label-b').innerHTML = questions[questionsCounter].b;
             document.getElementById('label-c').innerHTML = questions[questionsCounter].c;
