@@ -56,29 +56,6 @@ let resetButton = document.getElementById('reset');
 let submitInstruction = document.createElement('p');
 let scoreDisplay = document.createElement('p');
 
-//Keep selected answer highlighted
-//el.parentElement.parentElement.style.backgroundColor = '#ffc0ad';
-
-
-backButton.addEventListener('click', function() {
-    if(questionsCounter === 0) {return;}
-    else if(questionsCounter === correctAnswers.length) {return;}
-    else {
-        userAnswers.pop(); questionsCounter--;
-        questionNumber.innerHTML = questionNumber.innerHTML.slice(0, -1);
-        questionNumber.innerHTML += `${questionsCounter + 1}`;
-        document.getElementById('label-a').innerHTML = questions[questionsCounter].a;
-        document.getElementById('label-b').innerHTML = questions[questionsCounter].b;
-        document.getElementById('label-c').innerHTML = questions[questionsCounter].c;
-        document.getElementById('label-d').innerHTML = questions[questionsCounter].d;
-        question.innerHTML = questions[questionsCounter].question;
-    }
-})
-
-resetButton.addEventListener('click', function() {
-    document.location.reload();
-})
-
 nextButton.addEventListener('click', function(e) {
     if(getSelected() === undefined) {
         return;
@@ -114,6 +91,25 @@ nextButton.addEventListener('click', function(e) {
     }
 })
 
+backButton.addEventListener('click', function() {
+    if(questionsCounter === 0) {return;}
+    else if(questionsCounter === correctAnswers.length) {return;}
+    else {
+        userAnswers.pop(); questionsCounter--;
+        questionNumber.innerHTML = questionNumber.innerHTML.slice(0, -1);
+        questionNumber.innerHTML += `${questionsCounter + 1}`;
+        document.getElementById('label-a').innerHTML = questions[questionsCounter].a;
+        document.getElementById('label-b').innerHTML = questions[questionsCounter].b;
+        document.getElementById('label-c').innerHTML = questions[questionsCounter].c;
+        document.getElementById('label-d').innerHTML = questions[questionsCounter].d;
+        question.innerHTML = questions[questionsCounter].question;
+    }
+})
+
+resetButton.addEventListener('click', function() {
+    document.location.reload();
+})
+
 function getSelected() {
     let ans = '';
     allRadio.forEach((el) => {
@@ -121,7 +117,7 @@ function getSelected() {
         ans = el.id;
         }
     });
-    return ans ? ans : alert('Select an option to proceed');
+    return ans ? ans : alert('Select an option to proceed.');
 }
 
 function endQuiz() {
