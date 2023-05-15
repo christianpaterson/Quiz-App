@@ -8,37 +8,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="title">
-            <h1>Quiz</h1>
-            <hr>
-        </div>
-        <div class="question">
-            <p>Question #1</p><br>
-            <h3>Excited for this quiz?</h3>
-        </div>
-        <div class="answers">
-            <div class="answer">
-                <input type="radio" id="a" value="a" name="answer" class="radio">
-                <label for="a" class="radio-label" id="label-a">Nope</label>
+    <div class="outer-container">
+        <div class="container">
+            <div class="title">
+                <h1>Quiz</h1>
+                <hr>
             </div>
-            <div class="answer">
-                <input type="radio" id="b" value="b" name="answer" class="radio">
-                <label for="b" class="radio-label" id="label-b">I'm scared</label>
+            <div class="question">
+                <p>Question #1</p><br>
+                <h3>Excited for this quiz?</h3>
             </div>
-            <div class="answer">
-                <input type="radio" id="c" value="c" name="answer" class="radio">
-                <label for="c" class="radio-label" id="label-c">I quit</label>
+            <div class="answers">
+                <div class="answer">
+                    <input type="radio" id="a" value="a" name="answer" class="radio">
+                    <label for="a" class="radio-label" id="label-a">Nope</label>
+                </div>
+                <div class="answer">
+                    <input type="radio" id="b" value="b" name="answer" class="radio">
+                    <label for="b" class="radio-label" id="label-b">I'm scared</label>
+                </div>
+                <div class="answer">
+                    <input type="radio" id="c" value="c" name="answer" class="radio">
+                    <label for="c" class="radio-label" id="label-c">I quit</label>
+                </div>
+                <div class="answer">
+                    <input type="radio" id="d" value="d" name="answer" class="radio">
+                    <label for="d" class="radio-label" id="label-d">Let's do it</label>
+                </div>
             </div>
-            <div class="answer">
-                <input type="radio" id="d" value="d" name="answer" class="radio">
-                <label for="d" class="radio-label" id="label-d">Let's do it</label>
+            <div>
+                <button id="back">Back</button>
+                <button id="next">Next</button>
+                <button id="reset">Reset</button>
             </div>
-        </div>
-        <div>
-            <button id="back">Back</button>
-            <button id="next">Next</button>
-            <button id="reset">Reset</button>
         </div>
     </div>
     <script src="script.js"></script>
