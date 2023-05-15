@@ -7,15 +7,20 @@
 }
 
 body, html {
-    min-width: 100%;
+    min-width: 100vw;
     max-height: 100vh;
     background-color: #fff8da;
 }
 
+.outer-container {
+    max-width: 750px;
+    margin: 15px auto;
+}
+
 .container {
-    margin: 15px;
     padding-bottom: 5px;
     background-color: #fef8e4;
+    max-width: 750px;
 }
 
 .container, .answers {
@@ -48,6 +53,14 @@ hr {
     padding: 5px;
 }
 
+.answer:hover {
+    background-color: #ffc0ad;
+}
+
+label:hover {
+    cursor: pointer;
+}
+
 button {
     background-color: #fdcf90;
     border: 1px solid #90b4ce;
@@ -61,10 +74,4 @@ button {
 button:hover {
     cursor: pointer;
     background-color: #f9bc60;
-}
-
-.answer:hover {
-    box-sizing: content-box;
-    cursor: pointer;
-    background-color: #ffc0ad;
 }
