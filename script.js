@@ -46,6 +46,7 @@ let questionNumber = document.querySelector('.question p');
 let question = document.querySelector('.question h3');
 let questionsCounter = 0;
 let answerBlock = document.querySelector('.answers');
+let answers = document.querySelectorAll('.answer');
 let allRadio = document.querySelectorAll(".radio");
 let allLabel = document.querySelectorAll(".radio-label");
 let userAnswers = [];
@@ -54,6 +55,9 @@ let backButton = document.getElementById('back');
 let resetButton = document.getElementById('reset');
 let submitInstruction = document.createElement('p');
 let scoreDisplay = document.createElement('p');
+
+//Keep selected answer highlighted
+//el.parentElement.parentElement.style.backgroundColor = '#ffc0ad';
 
 
 backButton.addEventListener('click', function() {
@@ -79,7 +83,6 @@ nextButton.addEventListener('click', function(e) {
     if(getSelected() === undefined) {
         return;
     } else if(questionsCounter === correctAnswers.length) {
-        //alert(`You selected: ${userAnswers} and ${correctAnswers} were correct.`);
         endQuiz();
         return;
     } else {
@@ -90,8 +93,12 @@ nextButton.addEventListener('click', function(e) {
             for (let ans of allRadio) {ans.style.display = 'none';}
             for (let label of allLabel) {label.style.display = 'none';}
             nextButton.innerHTML = 'Submit';
-            submitInstruction.style.padding = '0px 25px 35px 25px';
+            submitInstruction.style.padding = '35px 25px 35px 25px';
             submitInstruction.innerHTML = 'Your quiz is over! Hit submit to see your score.';
+            for (let answer of answers) {
+                answer.style.display = 'none';
+            }
+            backButton.remove();
             question.remove();
             questionNumber.remove();
             answerBlock.appendChild(submitInstruction);
@@ -120,8 +127,9 @@ function getSelected() {
 function endQuiz() {
     document.querySelector('.answers p').style.display = 'none';
     let score = calculateScore();
+    nextButton.remove();
     scoreDisplay.innerHTML = `Your score is ${score} out of ${correctAnswers.length}.`;
-    scoreDisplay.style.padding = '0px 25px 35px 25px';
+    scoreDisplay.style.padding = '35px 25px 35px 25px';
     answerBlock.appendChild(scoreDisplay);
 }
 
