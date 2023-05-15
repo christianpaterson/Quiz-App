@@ -90,8 +90,10 @@ nextButton.addEventListener('click', function(e) {
             for (let ans of allRadio) {ans.style.display = 'none';}
             for (let label of allLabel) {label.style.display = 'none';}
             nextButton.innerHTML = 'Submit';
-            submitInstruction.style.padding = '0px 0px 35px 25px';
+            submitInstruction.style.padding = '0px 25px 35px 25px';
             submitInstruction.innerHTML = 'Your quiz is over! Hit submit to see your score.';
+            question.remove();
+            questionNumber.remove();
             answerBlock.appendChild(submitInstruction);
         } else {
             questionNumber.innerHTML = questionNumber.innerHTML.slice(0, -1);
@@ -119,7 +121,7 @@ function endQuiz() {
     document.querySelector('.answers p').style.display = 'none';
     let score = calculateScore();
     scoreDisplay.innerHTML = `Your score is ${score} out of ${correctAnswers.length}.`;
-    scoreDisplay.style.padding = '0px 0px 35px 25px';
+    scoreDisplay.style.padding = '0px 25px 35px 25px';
     answerBlock.appendChild(scoreDisplay);
 }
 
