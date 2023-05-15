@@ -1,42 +1,3 @@
-let questions = [
-    {
-        number: 1,
-        question: "Excited for this quiz?",
-        a: "Nope",
-        b: "Let's do it",
-        c: "I quit",
-        d: "I'm scared",
-        correct: "b"
-    },
-    {
-        number: 2,
-        question: "Which is true when using reduce without it's optional 2nd argument?",
-        a: "The callbackFn's accumulator is initialized to the initialValue argument",
-        b: "The callbackFn starts executing with the 1st value in the array as currentValue",
-        c: "The callbackFn's accumulator argument is set to the array's 1st value",
-        d: "You can run it on an empty array",
-        correct: "c"
-    },
-    {
-        number: 3,
-        question: "Which of the following values are falsy in JavaScript?",
-        a: "{}",
-        b: "[]",
-        c: "'0'",
-        d: "''",
-        correct: "d"
-    },
-    {
-        number: 4,
-        question: "Which of the following isn't true about Node.js?",
-        a: "It can interact with the OS",
-        b: "It can manipulate HTML & CSS",
-        c: "It can access the local file system",
-        d: "It can be run outside of a browser environment",
-        correct: "b"
-    }
-];
-
 let correctAnswers = [];
 for (let problem of questions) {
     correctAnswers.push(problem.correct);
@@ -80,6 +41,7 @@ nextButton.addEventListener('click', function(e) {
             questionNumber.remove();
             answerBlock.appendChild(submitInstruction);
         } else {
+            for (let ans of allRadio) {ans.checked = false;}
             questionNumber.innerHTML = questionNumber.innerHTML.slice(0, -1);
             questionNumber.innerHTML += `${questionsCounter + 1}`;
             document.getElementById('label-a').innerHTML = questions[questionsCounter].a;
