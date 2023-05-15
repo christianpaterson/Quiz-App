@@ -14,13 +14,14 @@ body, html {
 
 .outer-container {
     max-width: 750px;
-    margin: 15px auto;
+    margin: auto;
 }
 
 .container {
     padding-bottom: 5px;
     background-color: #fef8e4;
     max-width: 750px;
+    margin: 15px;
 }
 
 .container, .answers {
