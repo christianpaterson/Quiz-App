@@ -58,7 +58,7 @@ hr {
     background-color: #ffc0ad;
 }
 
-label:hover {
+input, label:hover {
     cursor: pointer;
 }
 
