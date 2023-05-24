@@ -73,9 +73,10 @@ backButton.addEventListener('click', function() {
         if(questionsCounter === 1) {
             backButton.style.display = "none";
         }
-        if(questionsCounter === 3) {
+        if(questionsCounter === correctAnswers.length - 1) {
             lastQuestionWarning.style.display = "none";
             nextButton.innerHTML = 'Next';
+            questionNumber.innerHTML = questionNumber.innerHTML.slice(0, -1);
         }
         userAnswers.pop(); questionsCounter--;
         questionNumber.innerHTML = questionNumber.innerHTML.slice(0, -1);
