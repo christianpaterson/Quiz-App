@@ -33,6 +33,9 @@ h1 {
     padding: 15px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
+h3 {
+    padding-top: 10px;
+}
 
 .title {
     background-color: #8fd7e2;
