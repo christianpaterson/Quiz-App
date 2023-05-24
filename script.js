@@ -1,21 +1,25 @@
-let correctAnswers = [];
-for (let problem of questions) {
+const correctAnswers = [];
+for (const problem of questions) {
     correctAnswers.push(problem.correct);
 }
 
-let questionNumber = document.querySelector('.question p');
-let question = document.querySelector('.question h3');
+const questionNumber = document.querySelector('.question span');
+const question = document.querySelector('.question h3');
+const lastQuestionWarning = document.querySelector('#warning');
 let questionsCounter = 0;
-let answerBlock = document.querySelector('.answers');
-let answers = document.querySelectorAll('.answer');
-let allRadio = document.querySelectorAll(".radio");
-let allLabel = document.querySelectorAll(".radio-label");
-let userAnswers = [];
-let nextButton = document.getElementById('next');
-let backButton = document.getElementById('back');
-let resetButton = document.getElementById('reset');
-let submitInstruction = document.createElement('p');
-let scoreDisplay = document.createElement('p');
+const answerBlock = document.querySelector('.answers');
+const answers = document.querySelectorAll('.answer');
+const allRadio = document.querySelectorAll(".radio");
+const allLabel = document.querySelectorAll(".radio-label");
+const userAnswers = [];
+const nextButton = document.getElementById('next');
+const backButton = document.getElementById('back');
+const resetButton = document.getElementById('reset');
+const submitInstruction = document.createElement('p');
+const scoreDisplay = document.createElement('p');
+
+backButton.style.display = "none";
+resetButton.style.display = "none";
 
 nextButton.addEventListener('click', function(e) {
     if(getSelected() === undefined) {
@@ -24,15 +28,23 @@ nextButton.addEventListener('click', function(e) {
         endQuiz();
         return;
     } else {
+        if(questionsCounter === correctAnswers.length - 2) {
+            nextButton.innerHTML = 'Submit';
+            lastQuestionWarning.style.float = "right";
+            lastQuestionWarning.innerHTML = "Last Question!";
+            lastQuestionWarning.style.color = "crimson";
+            lastQuestionWarning.style.fontSize = "18px";
+        }
         userAnswers.push(getSelected());
         questionsCounter++;
-
+        backButton.style.display = "inline";
         if(questionsCounter === correctAnswers.length) {
+            lastQuestionWarning.style.display = "none";
+            nextButton.innerHTML = 'Reveal';
             for (let ans of allRadio) {ans.style.display = 'none';}
             for (let label of allLabel) {label.style.display = 'none';}
-            nextButton.innerHTML = 'Submit';
             submitInstruction.style.padding = '35px 25px 35px 25px';
-            submitInstruction.innerHTML = 'Your quiz is over! Hit submit to see your score.';
+            submitInstruction.innerHTML = 'Your quiz is over! Hit reveal to see your score.';
             for (let answer of answers) {
                 answer.style.display = 'none';
             }
@@ -54,9 +66,17 @@ nextButton.addEventListener('click', function(e) {
 })
 
 backButton.addEventListener('click', function() {
-    if(questionsCounter === 0) {return;}
-    else if(questionsCounter === correctAnswers.length) {return;}
+    for (let ans of allRadio) {ans.checked = false;}
+
+    if(questionsCounter === correctAnswers.length) {return;}
     else {
+        if(questionsCounter === 1) {
+            backButton.style.display = "none";
+        }
+        if(questionsCounter === 3) {
+            lastQuestionWarning.style.display = "none";
+            nextButton.innerHTML = 'Next';
+        }
         userAnswers.pop(); questionsCounter--;
         questionNumber.innerHTML = questionNumber.innerHTML.slice(0, -1);
         questionNumber.innerHTML += `${questionsCounter + 1}`;
@@ -83,9 +103,10 @@ function getSelected() {
 }
 
 function endQuiz() {
+    nextButton.remove();
+    resetButton.style.display = "inline";
     document.querySelector('.answers p').style.display = 'none';
     let score = calculateScore();
-    nextButton.remove();
     scoreDisplay.innerHTML = `Your score is ${score} out of ${correctAnswers.length}.`;
     scoreDisplay.style.padding = '35px 25px 35px 25px';
     answerBlock.appendChild(scoreDisplay);
