@@ -1,6 +1,5 @@
-let questions = [
+const questions = [
     {
-        number: 1,
         question: "Excited for this quiz?",
         a: "Nope",
         b: "Let's do it",
@@ -9,7 +8,6 @@ let questions = [
         correct: "b"
     },
     {
-        number: 2,
         question: "Which of the following values is considered falsy in JavaScript?",
         a: "{}",
         b: "[]",
@@ -18,7 +16,6 @@ let questions = [
         correct: "d"
     },
     {
-        number: 3,
         question: "Which of the following is NOT true of JavaScript strings?",
         a: "They are objects",
         b: "They are iterable, and for..of works on them",
@@ -27,7 +24,6 @@ let questions = [
         correct: "a"
     },
     {
-        number: 4,
         question: "Which of the following is NOT true about Number() conversions in JavaScript?",
         a: "null is converted 0",
         b: "[99] is converted to 99",
@@ -36,7 +32,6 @@ let questions = [
         correct: "d"
     },
     {
-        number: 5,
         question: "Which of the following expressions evaluate to true in JavaScript?",
         a: "'toString' in Object;",
         b: "'11' > '3';",
@@ -45,7 +40,6 @@ let questions = [
         correct: "a"
     },
     {
-        number: 6,
         question: "Which is true when using reduce without it's optional 2nd argument?",
         a: "The callbackFn's accumulator is set to the initialValue argument",
         b: "The callbackFn starts executing with the 1st value in the array as currentValue",
@@ -54,7 +48,6 @@ let questions = [
         correct: "c"
     },
     {
-        number: 7,
         question: "Which of the following is NOT true about functions in JavaScript?",
         a: "JS functions can be stored in object properties AND array elements",
         b: "With closures, lexical scope refers to the function definition scope rather than the function invocation scope",
@@ -63,7 +56,6 @@ let questions = [
         correct: "c"
     },
     {
-        number: 8,
         question: "Which of the following is NOT true about Node.js?",
         a: "It can interact with the OS",
         b: "It can manipulate HTML & CSS",
@@ -72,7 +64,6 @@ let questions = [
         correct: "b"
     },
     {
-        number: 9,
         question: "Which of the following is NOT true of OOP in JavaScript?",
         a: "Access control, abstracting away internal details, and having methods defined as properties within an object are all examples of encapsulation",
         b: "JavaScript does not support the creation of static methods directly within a class declaration",
@@ -81,7 +72,6 @@ let questions = [
         correct: "b"
     },
     {
-        number: 10,
         question: "Which of the following is NOT true about JavaScript in general?",
         a: "With the addition of Worker Threads, typically single-threaded JS becomes fully parallel",
         b: "JavaScript supports asynchronous programming with callback functions, promises, asynch, and await",
