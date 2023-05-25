@@ -3,10 +3,10 @@ for (const problem of questions) {
     correctAnswers.push(problem.correct);
 }
 
+let questionsCounter = 0;
 const questionNumber = document.querySelector('.question span');
 const question = document.querySelector('.question h3');
 const lastQuestionWarning = document.querySelector('#warning');
-let questionsCounter = 0;
 const answerBlock = document.querySelector('.answers');
 const answers = document.querySelectorAll('.answer');
 const allRadio = document.querySelectorAll(".radio");
@@ -14,19 +14,18 @@ const allLabel = document.querySelectorAll(".radio-label");
 const userAnswers = [];
 const nextButton = document.getElementById('next');
 const backButton = document.getElementById('back');
-const resetButton = document.getElementById('reset');
+const tryAgainButton = document.getElementById('try-again');
 const submitInstruction = document.createElement('p');
 const scoreDisplay = document.createElement('p');
 
 backButton.style.display = "none";
-resetButton.style.display = "none";
+tryAgainButton.style.display = "none";
 
 nextButton.addEventListener('click', function(e) {
     if(getSelected() === undefined) {
         return;
     } else if(questionsCounter === correctAnswers.length) {
         endQuiz();
-        return;
     } else {
         if(questionsCounter === correctAnswers.length - 2) {
             nextButton.innerHTML = 'Submit';
@@ -34,6 +33,7 @@ nextButton.addEventListener('click', function(e) {
             lastQuestionWarning.innerHTML = "Last Question!";
             lastQuestionWarning.style.color = "crimson";
             lastQuestionWarning.style.fontSize = "18px";
+            lastQuestionWarning.style.display = "inline";
         }
         userAnswers.push(getSelected());
         questionsCounter++;
@@ -43,14 +43,14 @@ nextButton.addEventListener('click', function(e) {
             nextButton.innerHTML = 'Reveal';
             for (let ans of allRadio) {ans.style.display = 'none';}
             for (let label of allLabel) {label.style.display = 'none';}
-            submitInstruction.style.padding = '35px 25px 35px 25px';
-            submitInstruction.innerHTML = 'Your quiz is over! Hit reveal to see your score.';
             for (let answer of answers) {
                 answer.style.display = 'none';
             }
             backButton.remove();
             question.remove();
             questionNumber.remove();
+            submitInstruction.style.padding = '35px 25px 35px 25px';
+            submitInstruction.innerHTML = 'Your quiz is over! Hit reveal to see your score.';
             answerBlock.appendChild(submitInstruction);
         } else {
             for (let ans of allRadio) {ans.checked = false;}
@@ -89,7 +89,7 @@ backButton.addEventListener('click', function() {
     }
 })
 
-resetButton.addEventListener('click', function() {
+tryAgainButton.addEventListener('click', function() {
     document.location.reload();
 })
 
@@ -105,7 +105,7 @@ function getSelected() {
 
 function endQuiz() {
     nextButton.remove();
-    resetButton.style.display = "inline";
+    tryAgainButton.style.display = "inline";
     document.querySelector('.answers p').style.display = 'none';
     let score = calculateScore();
     scoreDisplay.innerHTML = `Your score is ${score} out of ${correctAnswers.length}.`;
