@@ -1,6 +1,7 @@
 const questions = [
     {
         question: "Excited for this quiz?",
+        //choices: [ "Nope", "Let's do it", "I quit", "I'm scared" ],
         a: "Nope",
         b: "Let's do it",
         c: "I quit",
